@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'device'
+      MYSQL_ROOT_PASSWORD: 'Corina_05'
+    ports:
+      - "3307:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      shared_network:
+
+  spring-demo:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_IP=db
+      - DB_PORT=3306
+      - DB_DBNAME=device
+      - DB_USER=root
+      - DB_PASSWORD=Corina_05
+    networks:
+      shared_network:
+
+volumes:
+  my-db:
+
+networks:
+  shared_network:
+    external: true
+    name: my_shared_network

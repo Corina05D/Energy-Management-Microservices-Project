@@ -1,0 +1,14 @@
+/* Provide sufficient contrast against white background */
+a {
+    color: #E01A76;
+}
+
+code {
+    color: #E01A76;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #E01A76;
+    border-color: #E01A76;
+}
