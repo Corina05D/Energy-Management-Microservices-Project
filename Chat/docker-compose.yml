@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  spring-demo:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "8089:8089"
+    networks:
+      shared_network:
+
+networks:
+  shared_network:
+    external: true
+    name: my_shared_network
